@@ -1,4 +1,5 @@
 package com.training.generics;
+//package resouces;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class ScreenShot {
 	public void captureScreenShot(){
 		
 		// to be changed 
-		String path = "C:\\Users\\Naveen\\Desktop\\screenshots\\";
+		String path = "C:\\Users\\AmbavarapuSatyabrahm\\Videos\\Selenium Test Screens\\RTTC_006\\";
 		String fileName ="";
 
 		GregorianCalendar calendar = new GregorianCalendar(); 
@@ -66,8 +67,9 @@ public class ScreenShot {
 
 	public void captureScreenShot(String fileName){
 		
-		String path =  "C:\\Users\\Naveen\\Desktop\\screenshots\\";
-	
+		String path =  "C:\\Users\\AmbavarapuSatyabrahm\\Videos\\Selenium Test Screens\\RTTC_006\\";
+		ScreenShot a = new ScreenShot(driver);
+		
 		// 1. create file 
 		// 2. capture screenshot from selenium 
 		// 3. store it in physical driver 
@@ -76,7 +78,7 @@ public class ScreenShot {
 			TakesScreenshot takeScreenShot  = (TakesScreenshot) driver; 
 			File file = takeScreenShot.getScreenshotAs(OutputType.FILE);
 			
-			FileUtils.copyFile(file, new File(path +fileName+".png"));
+			FileUtils.copyFile(file, new File(path+fileName+".png"));
 		} catch (WebDriverException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
