@@ -79,19 +79,20 @@ public class WaitTypes {
 	
 	
 
-	public WebElement elementToBeClickable(By locator, int timeout){
+	public void elementToBeClickable(WebElement locator, int timeout){
 		try{
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			WebElement element  = wait.until(
 					ExpectedConditions.elementToBeClickable(locator)
 					);
-			System.out.println("Element Located");
+			element.click();
+			//System.out.println("Element Located");
 			
-			return element;
+			//return element;
 		}catch(Exception e ){
 			System.out.println("Element Not Located " + e);
 		}
-		return null;
+		//return null;
 	}
 }
 

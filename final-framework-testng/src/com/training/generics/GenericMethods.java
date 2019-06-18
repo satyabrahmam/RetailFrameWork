@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 /**
  * 
@@ -68,6 +69,11 @@ public class GenericMethods {
 		}// other TODO 
 		return null;
 	}
+	public void callingActionClassMethod(WebElement dropdownValue) 
+	{
+		Actions action = new Actions(driver);		
+		action.moveToElement(dropdownValue).build().perform();
+	}
 	
 	// return true if element exists 
 	// this method works for us when we have more than 1 element 
@@ -81,4 +87,5 @@ public class GenericMethods {
 	public boolean checkSingleEntry(String locator, String type){
 		return getElementsAsList(locator, type).size() ==1;
 	}
+	
 }
