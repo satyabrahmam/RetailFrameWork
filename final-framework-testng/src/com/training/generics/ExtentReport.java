@@ -12,16 +12,12 @@ public class ExtentReport {
 		public ExtentReport(ExtentTest test) {			
 			this.test = test;			
 		}
-	 		
+	 	
 		public static ExtentReports getInstance()
 		{
 			
 			extent = new ExtentReports(System.getProperty("user.dir")+"\\test-output\\ExtentReport.html",true);
 			return extent;
-			//test = extent.startTest(testName);
-			//extent = new ExtentReports("eabtent.html");
-			//extent.loadConfig(new File(System.getProperty("user.dir")+"/test-output/extend-config.html"));
-			
 			
 		}
 		

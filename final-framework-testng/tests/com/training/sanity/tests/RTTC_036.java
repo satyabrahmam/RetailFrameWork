@@ -1,18 +1,12 @@
 package com.training.sanity.tests;
-import static org.testng.Assert.fail;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -24,27 +18,27 @@ import com.relevantcodes.extentreports.LogStatus;
 import com.training.generics.ExtentReport;
 import com.training.generics.GenericMethods;
 import com.training.generics.ScreenShot;
-import com.training.generics.TestNgListener;
 import com.training.pom.BasesLoginPage;
 import com.training.pom.ChangePasswordPage;
 import com.training.pom.MyAccountInfoPage;
 import com.training.pom.MyAccountPage;
 import com.training.pom.OrderHistoryPage;
+import com.training.pom.OrderInformationPage;
+import com.training.pom.ProductReturnPage;
 import com.training.pom.UserLoginPage;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 import com.trianing.waits.WaitTypes;
 
-
 /**
  *  
- * @See This Test Case will verify the ordered items in Order Information Page
+ * @See To Verify whether application allows the user to return ordered product
  */	
 
 //Added TestNG Listeners 
 @Listeners(com.training.generics.TestNgListener.class) 
 
-public class RTTC_004 {
+public class RTTC_036 {
 	private WebDriver driver;
 	private String baseUrl;
 	private BasesLoginPage baseLoginPage ;
@@ -60,7 +54,8 @@ public class RTTC_004 {
 	private ExtentTest test;
 	private WaitTypes waitType;
 	private GenericMethods genericMethods;
-	
+	private OrderInformationPage orderInformationPage;
+	private ProductReturnPage productReturnPage;
 	/**
 	 * @Method  setUpBeforeClass : method will Load the Properties File 
 	 */	
@@ -79,7 +74,7 @@ public class RTTC_004 {
 	public void setUp() throws Exception {
 		
 		extent = extentReport.getInstance();   
-		test = extent.startTest("Verify the Orders List");   
+		test = extent.startTest("Verify the return Ordered Product");   
 		driver = DriverFactory.getDriver(DriverNames.CHROME); 
 		baseLoginPage = new BasesLoginPage(driver,test);   
 		userLoginPage = new UserLoginPage(driver,test );
@@ -88,18 +83,19 @@ public class RTTC_004 {
 		changePasswordPage = new ChangePasswordPage(driver,test);
 		genericMethods = new GenericMethods(driver);
 		orderHistoryPage = new OrderHistoryPage(driver,test);
+		productReturnPage = new ProductReturnPage(driver, test);
 		waitType = new WaitTypes(driver);
 		baseUrl = properties.getProperty("baseURL");
-		screenShot = new ScreenShot(driver); 
+		screenShot = new ScreenShot(driver);
+		orderInformationPage = new OrderInformationPage(driver, test);
 		driver.get(baseUrl);		
 	}
 	
 	/**
-	 * @Method  viewOrderDetails : method will login into the application and verify the ordered items 
-	 * 								in Ordered Information page
+	 * @Method  returnOrderedProduct : method To Verify whether application allows the user to return ordered product
 	 */
 	@Test
-	public void viewOrderDetails() throws Exception
+	public void returnOrderedProduct() throws Exception
 	{
 		// Calling Account DropDown List Button method in Base Login Page Class
 		baseLoginPage.accountDropdownBtn(); 
@@ -125,19 +121,33 @@ public class RTTC_004 {
 		orderHistoryPage.clickviewIconImg();
 		screenShot.captureScreenShot();
 		
-		//Verifying the Page Title
-		if(orderHistoryPage.orderInfoPageTitle(driver.getTitle()))
-		{
-			
-			test.log(LogStatus.PASS, "Test Case Passed");
+		//Below details will enter in Product Return Page
+		orderInformationPage.clickOnOrderReturnImg();
 		
+		productReturnPage.clickOnReasonForReturnBtn();
+		
+		productReturnPage.sendProductName("ProductName");
+		productReturnPage.sendProductCode("123");
+		productReturnPage.clickedOnproductIsOpenedAsYesBtn();
+		
+		productReturnPage.sendFaultyCommentsTextBox("product is faulty");
+		screenShot.captureScreenShot();
+		
+		productReturnPage.clickedOnSubmitBtn();
+		screenShot.captureScreenShot();
+		
+		//Verifying the Product Return Success Message
+		if(productReturnPage.productReturnThankMsgDisplayed())
+		{
+			test.log(LogStatus.PASS, "Test Case Passed");
 		}
 		else
 		{
 			test.log(LogStatus.FAIL, "Test Case Failed");
 			Assert.fail();
-			
 		}
+		
+		
 		
 	}	
 	
@@ -152,4 +162,5 @@ public class RTTC_004 {
 		extent.close();
 		driver.close();
 	}
+
 }

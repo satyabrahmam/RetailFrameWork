@@ -18,14 +18,18 @@ public class OrderHistoryPage {
 			PageFactory.initElements(driver, this);
 		}
 	
-	@FindBy(xpath="//*[@title = 'View']")
+	//WebElement for View Icon Image
+	@FindBy(xpath="//*[@class = 'table table-hover']/tbody/tr[1]/td[7]/a")
 	private WebElement viewIconImg; 
-
+	
+	//Method will click on View Icon Image
 	public void clickviewIconImg()
 	{
 		this.viewIconImg.click();
 		test.log(LogStatus.INFO, "Clicked on View Order ICON Img");
 	}
+	
+	//Method will return True or False for Order Information Page Title 
 	public boolean orderInfoPageTitle(String pageTitle)
 	{
 		if(pageTitle.equalsIgnoreCase("Order Information"))
