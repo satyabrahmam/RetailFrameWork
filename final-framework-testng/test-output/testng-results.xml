@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="29347" started-at="2019-06-24T07:47:34Z" finished-at="2019-06-24T07:48:03Z">
+  <suite name="Default suite" duration-ms="64907" started-at="2019-07-03T10:58:59Z" finished-at="2019-07-03T11:00:04Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="29347" started-at="2019-06-24T07:47:34Z" finished-at="2019-06-24T07:48:03Z">
+    <test name="Default test" duration-ms="64907" started-at="2019-07-03T10:58:59Z" finished-at="2019-07-03T11:00:04Z">
       <class name="com.training.sanity.tests.RTTC_004">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="setUpBeforeClass" is-config="true" duration-ms="17" started-at="2019-06-24T13:17:34Z" finished-at="2019-06-24T13:17:34Z">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="setUpBeforeClass" is-config="true" duration-ms="21" started-at="2019-07-03T16:28:59Z" finished-at="2019-07-03T16:28:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="setUp" is-config="true" duration-ms="12577" started-at="2019-06-24T13:17:34Z" finished-at="2019-06-24T13:17:47Z">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="setUp" is-config="true" duration-ms="24789" started-at="2019-07-03T16:28:59Z" finished-at="2019-07-03T16:29:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="viewOrderDetails()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="viewOrderDetails" duration-ms="15851" started-at="2019-06-24T13:17:47Z" finished-at="2019-06-24T13:18:02Z">
+        <test-method status="PASS" signature="viewOrderDetails()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="viewOrderDetails" duration-ms="39446" started-at="2019-07-03T16:29:24Z" finished-at="2019-07-03T16:30:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- viewOrderDetails -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="tearDown" is-config="true" duration-ms="865" started-at="2019-06-24T13:18:02Z" finished-at="2019-06-24T13:18:03Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.RTTC_004@1d057a39]" name="tearDown" is-config="true" duration-ms="622" started-at="2019-07-03T16:30:03Z" finished-at="2019-07-03T16:30:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

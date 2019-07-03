@@ -32,6 +32,23 @@ private ExtentTest test;
 	@FindBy(xpath="//*[contains(text(), 'MY ORDERS')]")
 	private WebElement ordersLink; 
 	
+	//WebElement for Account Drop Down link 
+	@FindBy(xpath="//*[text() = 'Shop']")
+	private WebElement shopDropdown; 
+	
+	//WebElement for Necklace link
+	@FindBy(xpath="//*[@class = 'tb_menu_category_Gd1U2 tb_link']")
+	private WebElement necklaceLink; 
+		
+	//Method will get the SHOP Drown Down Link
+	public WebElement getshopDropdown() {
+		return shopDropdown;
+	}
+	
+	////Method will get the NECKLACE Link
+	public WebElement getnecklaceLink() {
+		return necklaceLink;
+	}
 	
 	//Method will get Account Drop Down link
 	public WebElement getAccountDropdown() {

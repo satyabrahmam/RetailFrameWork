@@ -27,6 +27,14 @@ public class AdminDashboard {
 	@FindBy(xpath="//*[@id = 'menu-catalog']/ul/li[1]/a")
 	private WebElement categoriesOption; 
 	
+	//WebElement for Products Option in CataLog Menu in Dashboard Page
+	@FindBy(xpath="//*[@id = 'menu-catalog']/ul/li[2]/a")
+	private WebElement productsOption; 
+		
+	//WebElement for Logout in Dashboard Page
+	@FindBy(xpath="//*[text() = 'Logout']")
+	private WebElement logOut; 
+	
 	//Method will get CataLog Menu in Dashboard Page
 	public WebElement getCataLogMenu() {
 		return cataLogMenu;
@@ -36,11 +44,25 @@ public class AdminDashboard {
 	public WebElement getCategoriesOption() {
 		return categoriesOption;
 	}
+	
+	//Method will get the Products Option in CataLog Menu in Dashboard Page
+	public WebElement getProductsOption() {
+		return productsOption;
+	}
+	
+	
 
 	//Method will click on Categories Option in CataLog Menu in Dashboard Page
 	public void clickOnCategoriesOption() {
 		this.categoriesOption.click(); 
 		test.log(LogStatus.INFO, "Clicked on Categories Button");
+	}
+	
+	
+	//Method will click on Logout button
+	public void clickOnLogout() {
+		this.logOut.click(); 
+		test.log(LogStatus.INFO, "Clicked on Logout Button");
 	}
 	
 	

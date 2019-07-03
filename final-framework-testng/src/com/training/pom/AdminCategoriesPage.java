@@ -24,6 +24,14 @@ public class AdminCategoriesPage {
 	@FindBy(xpath="//*[@data-original-title = 'Add New']")
 	private WebElement addBtn; 
 	
+	//WebElement for selection of category in Categories List
+	@FindBy(xpath = "//*[@class = 'table table-bordered table-hover']/tbody/tr[1]/td/input" )
+	private WebElement categorySelection;
+	
+	//WebElement for Edit Button
+	@FindBy (xpath = "//*[@class = 'table table-bordered table-hover']/tbody/tr[1]/td[4]/a")
+	private WebElement editBtn;
+	
 	//WebElement for Category Name Text Box 
 	@FindBy(xpath="//*[@id = 'input-name1']")
 	private WebElement categoryNameTxtbox; 
@@ -46,9 +54,11 @@ public class AdminCategoriesPage {
 	
 	//WebElement for "Category Added Success" Message 
 	@FindBy(xpath = "//*[contains(text() ,'You have modified')]")
-	private WebElement categoryAddedMessage;
+	private WebElement categoryAddedOrUpdatedMessage;
 	
 	
+	
+		
 	//Method will click on Add Button
 	public void clickOnAddBtn()
 	{
@@ -95,12 +105,26 @@ public class AdminCategoriesPage {
 		test.log(LogStatus.INFO, "Clicked on Save Button in Categories Page");
 	}	
 	
-	//Method will return True or False for "Category Added Success" Message displayed in Categories Page
-	public boolean isCategoryAddedMessageDisplay()
+	//Method will click one of the Category in CategoryList
+	public void clickOnCategorySelection()
 	{
-		test.log(LogStatus.INFO, "Category Added Message has been displayed");
-		return this.categoryAddedMessage.isDisplayed();
+		this.categorySelection.click();
+		test.log(LogStatus.INFO, "Selected one of the Category in CategoryList");
 		
 	}
+	//Method will click on EditButton in CategoryList
+	public void clickOnEditButton()
+	{
+		this.editBtn.click();
+		test.log(LogStatus.INFO, "Clicked on EditButton in CategoryList");
+	}
+	//Method will return True or False for "Category Added or Modified Success" Message displayed in Categories Page
+	public boolean isCategoryAddedMessageDisplay()
+	{
+		test.log(LogStatus.INFO, "Category Added or Modified Message has been displayed");
+		return this.categoryAddedOrUpdatedMessage.isDisplayed();
+		
+	}
+	
 	
 }
