@@ -20,6 +20,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ApachePOIExcelRead {
 	public  String [][] getExcelContent(String fileName) {
+
 		int rowCount =0; 
 		String [][] list1 = null; 
 		
@@ -48,19 +49,20 @@ public class ApachePOIExcelRead {
 				Row row = rowIterator.next();
 				// For each row, iterate through all the columns
 				Iterator<Cell> cellIterator = row.cellIterator();
-
 				int cellCount = 0; 
 				int noOfColumns = row.getLastCellNum(); 
 				String[] tempList1 = new String[noOfColumns];
 				
 				
-				
-				while (cellIterator.hasNext()) {
+				while (cellIterator.hasNext()) 
+				{
 					Cell cell = cellIterator.next();
 					// Check the cell type and format accordingly
 					switch (cell.getCellType()) {
 
 					case Cell.CELL_TYPE_NUMERIC:
+						
+					
 						
 						if(((Double) cell.getNumericCellValue()).toString()!=null){
 							tempList1[cellCount] = ((Double) cell.getNumericCellValue()).toString(); 

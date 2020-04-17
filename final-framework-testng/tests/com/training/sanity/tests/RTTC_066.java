@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -120,12 +121,15 @@ public class RTTC_066 {
 		waitType.elementToBeClickable(adminDashboard.getCategoriesOption(), 30);
 				
 				
+	
 		// To Capture the screenshots
 		screenShot.captureScreenShot();
 		adminCategoriesPage.clickOnAddBtn();
 				
 		//Entering below details in Category Page
 		//Accessing the all values from Properties File
+		
+		//String addingCategoryName1 = "rama";
 		String addingCategoryName = properties.getProperty("categoryName");
 		adminCategoriesPage.sendCategoryName(addingCategoryName);
 		screenShot.captureScreenShot();
@@ -141,12 +145,14 @@ public class RTTC_066 {
 		adminCategoriesPage.sendMetaTagDesciption(addingMetaTagDescription);
 		adminCategoriesPage.clickOnSaveBtn();
 		
-		//Creating local variable DB values
+		//Creating local variable for DB values
 		screenShot.captureScreenShot();
-		String categoryNameDB = null;
-		String categoryDescriptionDB = null;
-		String metaTagTitleDB = null;
-		String metaTagTitleDescriptionDB = null;
+		
+		
+		String categoryNameDB = "";
+		String categoryDescriptionDB = "";
+		String metaTagTitleDB = "";
+		String metaTagTitleDescriptionDB = "";
 		
 		//will fetch values from Category table from DB
 		Iterator<CategoryBean> categoryValues = upSkillRetailCategoryTable.getCategoryDetails().iterator();

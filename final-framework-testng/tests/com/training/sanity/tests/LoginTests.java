@@ -2,6 +2,8 @@ package com.training.sanity.tests;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -12,6 +14,7 @@ import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
 import com.training.pom.LoginPOM;
+import com.training.readexcel.RetailApachePOIReading;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -22,6 +25,7 @@ public class LoginTests {
 	private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
+	private RetailApachePOIReading retailobj;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
@@ -36,6 +40,7 @@ public class LoginTests {
 		loginPOM = new LoginPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
+		retailobj = new RetailApachePOIReading();
 		// open the browser 
 		driver.get(baseUrl);
 	}
@@ -47,6 +52,7 @@ public class LoginTests {
 	}
 	@Test
 	public void validLoginTest() {
+		
 		loginPOM.sendUserName("admin");
 		loginPOM.sendPassword("admin@123");
 		loginPOM.clickLoginBtn(); 

@@ -118,6 +118,7 @@ public class RTTC_036 {
 		waitType.elementToBeClickable(baseLoginPage.getOrdersLink(), 30);
 		
 		screenShot.captureScreenShot();
+		//screenShot.captureScreenShot("REf"+ 1 );
 		orderHistoryPage.clickviewIconImg();
 		screenShot.captureScreenShot();
 		
